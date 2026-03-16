@@ -1,0 +1,17 @@
+<ng-container *ngIf="data$ | async as vm">
+  <header class="article-header">
+    <div class="article-eyebrow">
+      <span>{{ vm.category }}</span>
+    </div>
+    <h1>{{ vm.title }}</h1>
+    <p>
+      This guide helps you configure and use this part of AdRadar. Follow the steps below and adjust them for your
+      specific workflows.
+    </p>
+  </header>
+
+  <div class="article-body">
+    <div [innerHTML]="vm.html"></div>
+  </div>
+</ng-container>
+

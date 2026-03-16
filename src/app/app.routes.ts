@@ -47,6 +47,11 @@ export const routes: Routes = [
     title: 'Blog Post | Ad Radar'
   },
   {
+    path: 'help-center',
+    loadChildren: () => import('./pages/help-center/help-center.routes').then(m => m.HELP_CENTER_ROUTES),
+    title: 'Help Center | Recotap'
+  },
+  {
     path: '**',
     redirectTo: ''
   }

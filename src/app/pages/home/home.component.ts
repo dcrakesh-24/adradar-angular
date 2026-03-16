@@ -2,10 +2,12 @@ import {
   AfterViewInit,
   Component,
   ElementRef,
+  HostListener,
   Inject,
   OnDestroy,
   PLATFORM_ID,
   QueryList,
+  ViewChild,
   ViewChildren
 } from '@angular/core';
 import { CommonModule } from '@angular/common';
@@ -77,6 +79,7 @@ interface CompanyLogo {
 })
 export class HomeComponent implements AfterViewInit, OnDestroy {
   @ViewChildren('timelineStep') timelineStepRefs!: QueryList<ElementRef<HTMLElement>>;
+  @ViewChild('howItWorksSection') howItWorksSectionRef?: ElementRef<HTMLElement>;
 
   readonly companyLogos: CompanyLogo[] = [
     { name: 'CRISIL', image: '/assets/home/images/crisil.png', alt: 'CRISIL logo' },
@@ -420,6 +423,9 @@ export class HomeComponent implements AfterViewInit, OnDestroy {
 
   private stepObserver?: IntersectionObserver;
   private stepListSub?: Subscription;
+  private howItWorksLocked = false;
+  private wheelThrottled = false;
+  private suppressAutoLock = false;
 
   constructor(@Inject(PLATFORM_ID) private platformId: object) {}
 
@@ -435,6 +441,65 @@ export class HomeComponent implements AfterViewInit, OnDestroy {
   ngOnDestroy(): void {
     this.stepObserver?.disconnect();
     this.stepListSub?.unsubscribe();
+  }
+
+  @HostListener('window:scroll')
+  onWindowScroll(): void {
+    if (!isPlatformBrowser(this.platformId)) {
+      return;
+    }
+
+    if (window.innerWidth < 992) {
+      // do not lock on smaller screens
+      if (this.howItWorksLocked) {
+        this.unlockHowItWorks();
+      }
+      return;
+    }
+
+    const section = this.howItWorksSectionRef?.nativeElement;
+    if (!section) {
+      return;
+    }
+
+    const rect = section.getBoundingClientRect();
+    const viewportHeight = window.innerHeight || document.documentElement.clientHeight;
+
+    // consider the section "active" once its top reaches a small offset from the top
+    const activationOffset = 80;
+    const withinViewport = rect.top <= activationOffset && rect.bottom >= viewportHeight * 0.6;
+
+    if (withinViewport && !this.howItWorksLocked && !this.suppressAutoLock) {
+      this.lockHowItWorks();
+    } else if (!withinViewport) {
+      if (this.howItWorksLocked) {
+        this.unlockHowItWorks();
+      }
+      // once user leaves the section, allow locking again next time
+      this.suppressAutoLock = false;
+    }
+  }
+
+  @HostListener('window:wheel', ['$event'])
+  onWheel(event: WheelEvent): void {
+    if (!this.howItWorksLocked) {
+      return;
+    }
+
+    event.preventDefault();
+
+    if (this.wheelThrottled) {
+      return;
+    }
+
+    this.wheelThrottled = true;
+    setTimeout(() => (this.wheelThrottled = false), 650);
+
+    if (event.deltaY > 0) {
+      this.advanceHowItWorksStep();
+    } else if (event.deltaY < 0) {
+      this.previousHowItWorksStep();
+    }
   }
 
   togglePainPoint(index: number): void {
@@ -477,5 +542,42 @@ export class HomeComponent implements AfterViewInit, OnDestroy {
       stepRef.nativeElement.setAttribute('data-step-index', String(index));
       this.stepObserver?.observe(stepRef.nativeElement);
     });
+  }
+
+  private lockHowItWorks(): void {
+    const body = document.body;
+    body.style.overflow = 'hidden';
+    this.howItWorksLocked = true;
+  }
+
+  private unlockHowItWorks(): void {
+    const body = document.body;
+    body.style.overflow = '';
+    this.howItWorksLocked = false;
+  }
+
+  private advanceHowItWorksStep(): void {
+    const lastIndex = this.timelineSteps.length - 1;
+    if (this.activeHowItWorksIndex < lastIndex) {
+      this.activeHowItWorksIndex += 1;
+      return;
+    }
+
+    // reached final step, release page scroll and avoid relocking until user leaves section
+    this.suppressAutoLock = true;
+    this.unlockHowItWorks();
+    window.scrollBy({ top: 10, behavior: 'instant' as ScrollBehavior });
+  }
+
+  private previousHowItWorksStep(): void {
+    if (this.activeHowItWorksIndex > 0) {
+      this.activeHowItWorksIndex -= 1;
+      return;
+    }
+
+    // at first step and scrolling up: allow page to scroll back and avoid relocking until user leaves section
+    this.suppressAutoLock = true;
+    this.unlockHowItWorks();
+    window.scrollBy({ top: -10, behavior: 'instant' as ScrollBehavior });
   }
 }

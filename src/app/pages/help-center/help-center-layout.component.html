@@ -1,0 +1,72 @@
+<div class="help-center-page">
+  <div class="help-center-shell container">
+    <div class="help-center-grid">
+      <!-- Left navigation -->
+      <nav class="help-sidebar help-sidebar--left">
+        <div class="sidebar-section" *ngFor="let group of navItems; let i = index">
+          <!-- Simple leaf item -->
+          <ng-container *ngIf="!group.children?.length; else accordionGroup">
+            <a
+              class="sidebar-leaf-link"
+              [routerLink]="['./', group.path]"
+              routerLinkActive="is-active"
+              [routerLinkActiveOptions]="{ exact: true }"
+            >
+              {{ group.label }}
+            </a>
+          </ng-container>
+
+          <!-- Accordion group for items with children -->
+          <ng-template #accordionGroup>
+            <button
+              type="button"
+              class="sidebar-section-label sidebar-accordion-trigger"
+              (click)="toggleGroup(i)"
+              [attr.aria-expanded]="expandedIndex === i"
+            >
+              <span>{{ group.label }}</span>
+              <span class="accordion-icon" aria-hidden="true">
+                {{ expandedIndex === i ? '−' : '+' }}
+              </span>
+            </button>
+
+            <ul
+              class="sidebar-link-list"
+              *ngIf="group.children?.length && expandedIndex === i"
+            >
+              <li *ngFor="let item of group.children">
+                <a
+                  [routerLink]="['./', item.path]"
+                  routerLinkActive="is-active"
+                  [routerLinkActiveOptions]="{ exact: true }"
+                >
+                  {{ item.label }}
+                </a>
+              </li>
+            </ul>
+          </ng-template>
+        </div>
+      </nav>
+
+      <!-- Main content -->
+      <main class="help-main">
+        <router-outlet></router-outlet>
+      </main>
+
+      <!-- Right "On this page" -->
+      <aside class="help-sidebar help-sidebar--right">
+        <div class="toc" *ngIf="tocItems$ | async as tocItems">
+          <div class="toc-label">On This Page</div>
+          <ul>
+            <li *ngFor="let item of tocItems">
+              <a [href]="'#' + item.id">
+                {{ item.label }}
+              </a>
+            </li>
+          </ul>
+        </div>
+      </aside>
+    </div>
+  </div>
+</div>
+

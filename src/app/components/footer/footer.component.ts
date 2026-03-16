@@ -45,6 +45,7 @@ import { RouterLink } from '@angular/router';
               <a routerLink="/blog">Blog</a>
               <a href="#">Careers</a>
               <a href="#">Contact</a>
+              <a routerLink="/help-center">Help Center</a>
             </div>
 
             <div class="footer-col">
@@ -69,6 +70,6 @@ import { RouterLink } from '@angular/router';
 })
 export class FooterComponent {
   currentYear = new Date().getFullYear();
-  smallLogoSrc = '/assets/adradar-logo.png';
-  bigLogoSrc = '/assets/adradar-logo.png';
+  smallLogoSrc = '/assets/adradar-2.png';
+  bigLogoSrc = '/assets/adradar.png';
 }

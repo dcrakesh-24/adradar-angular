@@ -1,0 +1,146 @@
+.help-center-page {
+  background: #ffffff;
+}
+
+.help-center-shell {
+  padding-top: 2.5rem;
+  padding-bottom: 3rem;
+}
+
+.help-center-grid {
+  display: grid;
+  grid-template-columns: 260px minmax(0, 1fr) 240px;
+  gap: 2.5rem;
+  align-items: flex-start;
+}
+
+.help-sidebar {
+  position: sticky;
+  top: 88px;
+  max-height: calc(100vh - 104px);
+  overflow: auto;
+  padding-right: 0.5rem;
+}
+
+.help-sidebar--left {
+  border-right: 1px solid #e5e7eb;
+}
+
+.help-sidebar--right {
+  border-left: 1px solid #e5e7eb;
+  padding-left: 1.5rem;
+}
+
+.back-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+  font-size: 0.85rem;
+  color: #6b7280;
+  text-decoration: none;
+  margin-bottom: 1.5rem;
+}
+
+.back-link:hover {
+  color: #111827;
+}
+
+.sidebar-section {
+  margin-bottom: 1.5rem;
+}
+
+.sidebar-section-label {
+  font-size: 0.78rem;
+  text-transform: uppercase;
+  letter-spacing: 0.09em;
+  font-weight: 700;
+  color: #6b7280;
+  margin-bottom: 0.5rem;
+}
+
+.sidebar-accordion-trigger {
+  width: 100%;
+  background: transparent;
+  border: 0;
+  padding: 0.15rem 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+  cursor: pointer;
+}
+
+.accordion-icon {
+  font-size: 0.9rem;
+  color: #9ca3af;
+}
+
+.sidebar-link-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.sidebar-link-list li + li {
+  margin-top: 0.15rem;
+}
+
+.sidebar-link-list a {
+  display: block;
+  padding: 0.28rem 0.2rem;
+  border-radius: 6px;
+  font-size: 0.9rem;
+  color: #111827;
+  text-decoration: none;
+}
+
+.sidebar-link-list a:hover {
+  background: #f3f4f6;
+}
+
+.sidebar-link-list a.is-active {
+  background: #f9fafb;
+  color: #4f46e5;
+  font-weight: 600;
+}
+
+.sidebar-leaf-link {
+  display: block;
+  padding: 0.28rem 0.2rem;
+  border-radius: 6px;
+  font-size: 0.9rem;
+  color: #111827;
+  text-decoration: none;
+}
+
+.sidebar-leaf-link:hover {
+  background: #f3f4f6;
+}
+
+.sidebar-leaf-link.is-active {
+  background: #e5edff;
+  color: #1d4ed8;
+  font-weight: 600;
+}
+
+.help-main {
+  min-height: 60vh;
+}
+
+@media (max-width: 1023.98px) {
+  .help-center-grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .help-sidebar {
+    position: static;
+    max-height: none;
+    border: 0;
+    padding: 0;
+  }
+
+  .help-sidebar--right {
+    margin-top: 2rem;
+  }
+}
+
