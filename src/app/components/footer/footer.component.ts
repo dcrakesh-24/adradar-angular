@@ -10,7 +10,7 @@ import { RouterLink } from '@angular/router';
       <div class="footer-inner container-fluid">
         <div class="footer-top">
           <div class="footer-brand">
-            <a routerLink="/" aria-label="AdRadar home" class="footer-logo-small-link mb-5">
+            <a routerLink="/" aria-label="AdRadar home" class="footer-logo-small-link">
               <img [src]="smallLogoSrc" alt="AdRadar logo" class="footer-logo-small" />
             </a>
             <p class="footer-tagline">The AI Copilot for LinkedIn Ads.<br />Stop guessing. Start knowing.</p>
@@ -69,6 +69,6 @@ import { RouterLink } from '@angular/router';
 })
 export class FooterComponent {
   currentYear = new Date().getFullYear();
-  smallLogoSrc = '/assets/adradar-2.png';
-  bigLogoSrc = '/assets/adradar.png';
+  smallLogoSrc = '/assets/adradar-logo.png';
+  bigLogoSrc = '/assets/adradar-logo.png';
 }

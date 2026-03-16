@@ -13,11 +13,9 @@
             AdRadar is the AI Copilot for B2B teams running LinkedIn Ads. Specialized agents watch your
             campaigns 24/7 - flagging waste, predicting fatigue, and telling you exactly what to do next.
           </p>
-          <div class="d-flex justify-content-center flex-wrap gap-2 mb-3 align-items-center">
-            <a href="#pricing" class="btn btn-danger rounded-pill ps-4 pe-1 fw-semibold fs-5" style="background-color: #FF6500 !important;">
-              Start for free <img src="/assets/home/images/button-arrow.svg" alt="Arrow right" class="ms-2" />
-            </a>
-            <a class="d-flex btn btn-outline-dark rounded-pill px-4 align-items-center justify-content-center fw-semibold" href="#how-it-works" style="height: 60px; color:#111827">See how it works</a>
+          <div class="d-flex justify-content-center flex-wrap gap-2 mb-3">
+            <a class="btn btn-danger rounded-pill px-4" href="#pricing">Get started free</a>
+            <a class="btn btn-outline-dark rounded-pill px-4" href="#how-it-works">See how it works</a>
           </div>
           <p class="hero-caption mb-4">Free forever plan &bull; No credit card required &bull; Setup in under 2 minutes</p>
         </div>
@@ -48,7 +46,8 @@
   <section class="problem-section py-5">
     <div class="container">
       <div class="section-head text-center">
-          <span class="section-eyebrow p-2 rounded-pill">THE PROBLEM</span>
+        <div class="section-eyebrow p-2 rounded-pill">
+          <span>THE PROBLEM</span></div>
         <h2>LinkedIn Ads is your most strategic channel. It&apos;s also your biggest black box.</h2>
         <p>Teams spending 5k - 250k monthly in LinkedIn are flying blind and fixing issues too late.</p>
       </div>
@@ -76,36 +75,10 @@
     </div>
   </section>
 
-
-  <section class="specialists-section py-5" id="copilots">
-    <div class="container">
-      <div class="section-head text-center">
-        <span class="section-eyebrow p-2 rounded-pill">AI COPILOTS</span>
-        <h2>Six specialists. One intelligent formation.</h2>
-        <p>
-          Each Copilot owns a distinct layer of your LinkedIn Ads performance. Individually powerful. Together, they
-          share context and memory - compounding intelligence with every campaign.
-        </p>
-      </div>
-
-      <div class="specialists-grid">
-        <article class="specialist-card" [ngClass]="card.tone" *ngFor="let card of specialistCards">
-          <div class="specialist-icon-wrap">
-            <img [src]="card.icon" [alt]="card.iconAlt" class="specialist-icon" />
-          </div>
-          <h3>{{ card.title }}</h3>
-          <p>{{ card.description }}</p>
-          <div class="specialist-stat"><span class="stat-arrow">→</span>{{ card.stat }}</div>
-        </article>
-      </div>
-    </div>
-  </section>
-
-
   <section class="how-it-works py-5" id="how-it-works" style="background-color: #FFF5F3;">
     <div class="container">
       <div class="section-head">
-        <div>HOW IT WORKS</div>
+        <div class="section-eyebrow">HOW IT WORKS</div>
         <h2>Connect once. On the radar instantly.</h2>
       </div>
 
@@ -142,11 +115,33 @@
     </div>
   </section>
 
+  <section class="specialists-section py-5" id="copilots">
+    <div class="container">
+      <div class="section-head text-center">
+        <h2>Six specialists. One intelligent formation.</h2>
+        <p>
+          Each Copilot owns a distinct layer of your LinkedIn Ads performance. Individually powerful. Together, they
+          share context and memory - compounding intelligence with every campaign.
+        </p>
+      </div>
+
+      <div class="specialists-grid">
+        <article class="specialist-card" [ngClass]="card.tone" *ngFor="let card of specialistCards">
+          <div class="specialist-icon-wrap">
+            <img [src]="card.icon" [alt]="card.iconAlt" class="specialist-icon" />
+          </div>
+          <h3>{{ card.title }}</h3>
+          <p>{{ card.description }}</p>
+          <div class="specialist-stat"><span class="stat-arrow">→</span>{{ card.stat }}</div>
+        </article>
+      </div>
+    </div>
+  </section>
 
   <section class="testimonial-section py-5" id="compare">
     <div class="container">
       <div class="section-head text-center">
-        <span class="section-eyebrow p-2 rounded-pill">EARLY ACCESS FEEDBACK</span>
+        <div class="section-eyebrow">EARLY ACCESS FEEDBACK</div>
         <h2>Built for how performance marketers actually work.</h2>
       </div>
 
@@ -174,7 +169,7 @@
   <section class="home-pricing-section py-5" id="pricing">
     <div class="container">
       <div class="section-head text-center">
-        <span class="section-eyebrow p-2 rounded-pill">PRICING</span>
+        <div class="section-eyebrow">PRICING</div>
         <h2>Start free. Scale as you grow.</h2>
         <p>No lock-in. No sales calls needed. Connect your LinkedIn Ads account and get your first insights in minutes.</p>
       </div>
@@ -208,41 +203,41 @@
   <section class="bottom-cta py-5" id="cta" style="background-image: url('/assets/home/images/app-cta.png'); background-size: cover; background-position: center;">
     <div class="container">
       <div class="cta-shell">
-        <div class="cta-agent-stack cta-agent-left ps-4">
+        <div class="cta-agent-stack cta-agent-left">
           <div class="cta-agent-chip tone-red">
             <img src="/assets/home/images/title_blocking%201.svg" alt="Title blocking agent icon" class="cta-agent-icon" />
-            <span class="fs-6">Enable Auto Title Blocking Agent</span>
+            <span>Enable Auto Title Blocking Agent</span>
           </div>
           <div class="cta-agent-chip tone-blue">
             <img src="/assets/home/images/account_blocking%201.svg" alt="Account blocking agent icon" class="cta-agent-icon" />
-            <span class="fs-6">Enable Auto Company Blocking Agent</span>
+            <span>Enable Auto Company Blocking Agent</span>
           </div>
           <div class="cta-agent-chip tone-amber">
             <img src="/assets/home/images/campaign_scheduling%201.svg" alt="Campaign scheduling agent icon" class="cta-agent-icon" />
-            <span class="fs-6">Enable Auto Company Blocking Agent</span>
+            <span>Enable Auto Company Blocking Agent</span>
           </div>
         </div>
 
         <div class="cta-content">
           <h2 class="mb-2">Your LinkedIn spend deserves better than <span>gut feel.</span></h2>
           <p class="mb-3">Connect your LinkedIn Ads account in 2 minutes. Your first Copilot briefing is ready instantly. No credit card required.</p>
-          <a href="#pricing" class="btn btn-danger rounded-pill ps-4 pe-1 fw-semibold fs-5" style="background-color: #FF6500 !important;">
-            Start for free <img src="/assets/home/images/button-arrow.svg" alt="Arrow right" class="ms-2" />
+          <a href="#pricing" class="btn btn-danger rounded-pill px-4">
+            Start for free <i class="bi bi-arrow-right-circle ms-2"></i>
           </a>
         </div>
 
-        <div class="cta-agent-stack cta-agent-right pe-4">
+        <div class="cta-agent-stack cta-agent-right">
           <div class="cta-agent-chip tone-sky">
-            <img src="/assets/home/images/impression_capping%202.svg" alt="Impression capping agent icon" class="cta-agent-icon bg-white rounded-pill" />
-            <span class="fs-6">Enable Impression Capping Agent</span>
+            <img src="/assets/home/images/impression_capping%202.svg" alt="Impression capping agent icon" class="cta-agent-icon" />
+            <span>Enable Impression Capping Agent</span>
           </div>
           <div class="cta-agent-chip tone-green">
-            <img src="/assets/home/images/bidding_optimization%201.svg" alt="Bidding optimization agent icon" class="cta-agent-icon bg-white rounded-pill" />
-            <span class="fs-6">Enable Auto Company Blocking Agent</span>
+            <img src="/assets/home/images/bidding_optimization%201.svg" alt="Bidding optimization agent icon" class="cta-agent-icon" />
+            <span>Enable Auto Company Blocking Agent</span>
           </div>
           <div class="cta-agent-chip tone-purple">
-            <img src="/assets/home/images/ad_rotation%201.svg" alt="Ad rotation agent icon" class="cta-agent-icon bg-white rounded-pill" />
-            <span class="fs-6 ">Enable Ad Rotation Agent</span>
+            <img src="/assets/home/images/ad_rotation%201.svg" alt="Ad rotation agent icon" class="cta-agent-icon" />
+            <span>Enable Ad Rotation Agent</span>
           </div>
         </div>
       </div>

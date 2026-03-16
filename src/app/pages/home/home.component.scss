@@ -129,7 +129,7 @@
 
 .problem-section {
   .pain-point {
-    background: #F8F5F0;
+    background: #f1ece9;
     border: 1px solid #e4ddd8;
     border-radius: 12px;
     padding: 0.75rem;
@@ -170,10 +170,10 @@
   }
 
   .pain-title {
-    font-size: 20px;
+    font-size: 1.05rem;
     line-height: 1.2;
     font-weight: 700;
-    color: #000;
+    color: #121826;
   }
 
   .pain-body {
@@ -364,9 +364,11 @@
   .specialists-grid {
     margin-top: 0.6rem;
     display: grid;
+    grid-template-columns: repeat(3, minmax(260px, 1fr));
     gap: 0.7rem 0.8rem;
     max-width: 1080px;
     margin-inline: auto;
+    justify-content: center;
   }
 
   .specialist-card {
@@ -424,82 +426,41 @@
   }
 
   .tone-blue {
-    background: #dff0fb;
+    background: #E3F3FA;
     border-color: #9fd3ea;
   }
 
   .tone-green {
-    background: #dff2e2;
+    background: #E5F7FA;
     border-color: #a5d5ab;
   }
 
   .tone-mint {
-    background: #ddf0df;
+    background: #26D8621F;
     border-color: #a2d2a7;
   }
 
   .tone-pink {
-    background: #f6e8ee;
+    background: #FBF2F5;
     border-color: #e3c8d4;
   }
 
   .tone-purple {
-    background: #ece9f8;
+    background: #F7F3F8;
     border-color: #cfc6ea;
   }
 
   .tone-amber {
-    background: #f8efd8;
+    background: #FFFBE3;
     border-color: #ead7a8;
   }
 
   .tone-teal {
-    background: #e2efe5;
+    background: #EDF3EC;
     border-color: #bed8c4;
   }
 
-  @media (min-width: 1200px) {
-    .specialist-card:nth-child(1) {
-      grid-column: 2;
-      grid-row: 1;
-    }
-
-    .specialist-card:nth-child(2) {
-      grid-column: 1;
-      grid-row: 2;
-    }
-
-    .specialist-card:nth-child(3) {
-      grid-column: 3;
-      grid-row: 2;
-    }
-
-    .specialist-card:nth-child(4) {
-      grid-column: 2;
-      grid-row: 3;
-      margin-top: -0.35rem;
-    }
-
-    .specialist-card:nth-child(5) {
-      grid-column: 1;
-      grid-row: 4;
-      margin-top: -0.7rem;
-    }
-
-    .specialist-card:nth-child(6) {
-      grid-column: 3;
-      grid-row: 4;
-      margin-top: -0.7rem;
-    }
-
-    .specialist-card:nth-child(7) {
-      grid-column: 2;
-      grid-row: 5;
-      margin-top: -1rem;
-    }
-  }
-
-  @media (max-width: 1199.98px) {
+  @media (max-width: 991.98px) {
     .specialists-grid {
       grid-template-columns: repeat(2, minmax(240px, 1fr));
     }
@@ -752,6 +713,8 @@
   }
 }
 
+.bottom-cta {
+  background: #f5f1ef;
 
   .cta-shell {
     position: relative;
@@ -759,7 +722,7 @@
     background: linear-gradient(90deg, #d8f6ff 0%, #fef2e8 55%, #ffdcbc 100%);
     border: 1px solid #e4d7cf;
     padding: 1.35rem 1.5rem;
-    height: 420px;
+    min-height: 220px;
     overflow: hidden;
     display: flex;
     align-items: center;
@@ -813,11 +776,11 @@
   }
 
   .cta-agent-chip {
-    width: 168px;
+    width: 138px;
     min-height: 52px;
     border-radius: 8px;
     color: #fff;
-    padding: 16px;
+    padding: 0.42rem 0.5rem;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -827,8 +790,8 @@
     box-shadow: 0 6px 14px rgba(12, 17, 30, 0.12);
 
     .cta-agent-icon {
-      width: 34px;
-      height: 34px;
+      width: 20px;
+      height: 20px;
       object-fit: contain;
       display: block;
     }
@@ -836,17 +799,32 @@
     span {
       font-size: 0.56rem;
       line-height: 1.15;
-      font-weight: 500;
+      font-weight: 600;
     }
   }
 
-  .tone-red { background: #B12A36; }
-  .tone-blue { background: #3f44b9; }
+  .tone-red { background: #b8233e; }
+  .tone-blue { background: #E3F3FA; }
   .tone-amber { background: #99631f; }
   .tone-sky { background: #2f84aa; }
-  .tone-green { background: #2f8f3f; }
+  .tone-green { background: #E5F7FA; }
   .tone-purple { background: #9148c1; }
 
+  @media (max-width: 991.98px) {
+    .cta-shell {
+      min-height: auto;
+      padding: 1.2rem 1rem;
+    }
+
+    .cta-agent-stack {
+      display: none;
+    }
+
+    h2 {
+      font-size: clamp(1.2rem, 4vw, 1.6rem);
+    }
+  }
+}
 
 @media (max-width: 991.98px) {
   .how-it-works {

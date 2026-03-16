@@ -227,7 +227,7 @@ export class HomeComponent implements AfterViewInit, OnDestroy {
       description: 'Limits impressions per company and excludes companies once the cap is reached, ensuring impressions are distributed across more target companies.',
       stat: 'Clear, scalable campaign design',
       tone: 'tone-green',
-      icon: '/assets/home/images/impression_capping_1.svg',
+      icon: '/assets/home/images/impression_capping%202.svg',
       iconAlt: 'Impression capping agent icon'
     },
     {
@@ -468,7 +468,7 @@ export class HomeComponent implements AfterViewInit, OnDestroy {
       },
       {
         root: null,
-        threshold: 0.1,
+        threshold: 0.45,
         rootMargin: '-20% 0px -35% 0px'
       }
     );
