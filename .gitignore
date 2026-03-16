@@ -1,0 +1,9 @@
+node_modules
+.angular
+# Ignore files and subdirectories within the .nx directory
+.nx/*
+.nx/**/*
+dist/**/*
+.cursor\rules\nx-rules.mdc
+.github\instructions\nx.instructions.md
+.history

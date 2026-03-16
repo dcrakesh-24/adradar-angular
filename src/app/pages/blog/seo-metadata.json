@@ -1,0 +1,16 @@
+{
+  "title": "Blog | Ad Radar",
+  "description": "Stay up to date with the latest articles, insights, and tips on LinkedIn Ads, B2B marketing, pipeline attribution, and account-based marketing.",
+  "keywords": "Ad Radar Blog, LinkedIn Ads Tips, B2B Marketing, Pipeline Attribution, ABM, Account Based Marketing",
+  "og": {
+    "title": "Blog | Ad Radar",
+    "description": "Latest insights on LinkedIn Ads and B2B marketing from Ad Radar.",
+    "type": "website"
+  },
+  "twitter": {
+    "card": "summary",
+    "title": "Blog | Ad Radar",
+    "description": "Latest insights on LinkedIn Ads and B2B marketing from Ad Radar."
+  },
+  "canonical": "https://adradar.com/blog"
+}

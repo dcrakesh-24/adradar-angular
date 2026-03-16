@@ -1,0 +1,16 @@
+{
+  "title": "GDPR Compliance | Ad Radar",
+  "description": "Learn how Ad Radar complies with GDPR regulations to protect the personal data of EU citizens and enable customers to remain compliant.",
+  "keywords": "GDPR, Data Privacy, EU Compliance, Ad Radar GDPR, Data Protection",
+  "og": {
+    "title": "GDPR Compliance | Ad Radar",
+    "description": "Learn how Ad Radar complies with GDPR regulations.",
+    "type": "website"
+  },
+  "twitter": {
+    "card": "summary",
+    "title": "GDPR Compliance | Ad Radar",
+    "description": "Learn how Ad Radar complies with GDPR regulations."
+  },
+  "canonical": "https://adradar.com/gdpr-compliance"
+}

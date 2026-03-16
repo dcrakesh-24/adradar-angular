@@ -1,0 +1,16 @@
+{
+  "title": "Website Privacy Policy | Ad Radar",
+  "description": "Ad Radar's website privacy policy explaining what data we collect, how we use it, and how we protect your personal information.",
+  "keywords": "Privacy Policy, Data Privacy, Cookies, Personal Data, Ad Radar",
+  "og": {
+    "title": "Website Privacy Policy | Ad Radar",
+    "description": "How Ad Radar collects and uses your data on our website.",
+    "type": "website"
+  },
+  "twitter": {
+    "card": "summary",
+    "title": "Website Privacy Policy | Ad Radar",
+    "description": "How Ad Radar collects and uses your data on our website."
+  },
+  "canonical": "https://adradar.com/website-privacy-policy"
+}

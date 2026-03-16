@@ -1,0 +1,17 @@
+{
+  "title": "Ad Radar - LinkedIn Ad Intelligence Platform",
+  "description": "Turn LinkedIn Ads into a predictable revenue channel with transparent, defensible insights that help you optimize budgets and prove impact.",
+  "keywords": "LinkedIn Ads, Ad Intelligence, B2B Marketing, Pipeline Revenue, Campaign Analytics, Impression Capping",
+  "og": {
+    "title": "Ad Radar - LinkedIn Ad Intelligence Platform",
+    "description": "Know how much pipeline and revenue your LinkedIn Ads drive.",
+    "image": "https://www.recotap.com/assets/images/template/Daahboard-HQ.gif",
+    "type": "website"
+  },
+  "twitter": {
+    "card": "summary_large_image",
+    "title": "Ad Radar - LinkedIn Ad Intelligence Platform",
+    "description": "Know how much pipeline and revenue your LinkedIn Ads drive."
+  },
+  "canonical": "https://adradar.com/"
+}

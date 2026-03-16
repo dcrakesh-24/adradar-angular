@@ -1,0 +1,47 @@
+{
+  "name": "adradar-angular",
+  "version": "0.0.0",
+  "scripts": {
+    "ng": "ng",
+    "generate:docx-config": "node scripts/generate-docx-config.mjs",
+    "watch:docx-config": "node scripts/watch-docx-config.mjs",
+    "start": "concurrently \"npm run watch:docx-config\" \"ng serve\"",
+    "prebuild": "npm run generate:docx-config",
+    "build": "ng build",
+    "build:ssr": "ng build && ng run adradar-angular:server",
+    "serve:ssr": "node dist/adradar-angular/server/server.mjs",
+    "prerender": "ng build && ng run adradar-angular:prerender"
+  },
+  "private": true,
+  "dependencies": {
+    "@angular/animations": "^17.0.0",
+    "@angular/common": "^17.0.0",
+    "@angular/compiler": "^17.0.0",
+    "@angular/core": "^17.0.0",
+    "@angular/forms": "^17.0.0",
+    "@angular/platform-browser": "^17.0.0",
+    "@angular/platform-browser-dynamic": "^17.0.0",
+    "@angular/platform-server": "^17.0.0",
+    "@angular/router": "^17.0.0",
+    "@angular/ssr": "^17.0.0",
+    "bootstrap": "^5.3.8",
+    "bootstrap-icons": "^1.13.1",
+    "express": "^4.18.2",
+    "mammoth": "^1.11.0",
+    "rxjs": "~7.8.0",
+    "tslib": "^2.3.0",
+    "zone.js": "~0.14.2"
+  },
+  "devDependencies": {
+    "@angular-devkit/build-angular": "^17.0.0",
+    "@angular/cli": "^17.0.0",
+    "@angular/compiler-cli": "^17.0.0",
+    "@types/express": "^4.17.17",
+    "@types/node": "^18.18.0",
+    "autoprefixer": "^10.4.27",
+    "concurrently": "^9.2.1",
+    "postcss": "^8.5.6",
+    "tailwindcss": "^3.4.19",
+    "typescript": "~5.2.2"
+  }
+}

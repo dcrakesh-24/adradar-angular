@@ -1,0 +1,126 @@
+<div class="blog-listing" *ngIf="!isDetailView">
+  <section class="blog-hero">
+    <h1><span>Ad Radar</span> Blog</h1>
+    <p>Discover practical guides, expert tips, and real-world stories on Account-Based Marketing and LinkedIn Ads.</p>
+  </section>
+
+  <div class="loading-state" *ngIf="isLoading; else listStateContent">
+    <div class="spinner"></div>
+    <p>Loading blogs...</p>
+  </div>
+
+  <ng-template #listStateContent>
+    <div class="error-state" *ngIf="docxUploadError && useDocxMode; else apiOrContentState">
+      <p>{{ docxUploadError }}</p>
+      <button (click)="loadDocxManifest()">Retry</button>
+    </div>
+
+    <ng-template #apiOrContentState>
+      <div class="error-state" *ngIf="error && !useDocxMode; else listingContent">
+        <p>{{ error }}</p>
+        <button (click)="loadBlogs()">Retry</button>
+      </div>
+    </ng-template>
+  </ng-template>
+
+  <ng-template #listingContent>
+    <section class="featured-section" *ngIf="featuredBlog as blog">
+      <article class="featured-blog" (click)="openBlog(blog)">
+        <div class="featured-image">
+          <img *ngIf="blog.thumbnail" [src]="blog.thumbnail" [alt]="blog.title" loading="lazy" />
+          <div class="image-placeholder" *ngIf="!blog.thumbnail">Featured Blog</div>
+        </div>
+        <div class="featured-content">
+          <h2>{{ blog.title }}</h2>
+          <p>{{ getExcerpt(blog.content, 300) }}</p>
+          <button type="button" class="read-btn" (click)="openBlog(blog); $event.stopPropagation()">Read Blog</button>
+        </div>
+      </article>
+    </section>
+
+    <section class="blog-grid" *ngIf="regularBlogs.length">
+      <article class="blog-card" *ngFor="let blog of regularBlogs" (click)="openBlog(blog)">
+        <div class="card-thumbnail">
+          <img *ngIf="blog.thumbnail" [src]="blog.thumbnail" [alt]="blog.title" loading="lazy" />
+          <div class="image-placeholder" *ngIf="!blog.thumbnail">Blog</div>
+        </div>
+        <div class="card-body">
+          <h3 class="card-title">{{ blog.title }}</h3>
+          <div class="card-meta">
+            <span class="author">{{ blog.author }}</span>
+            <span>{{ formatDate(blog.scheduledAt || blog.createdAt) }}</span>
+          </div>
+        </div>
+      </article>
+    </section>
+
+    <div class="empty-state" *ngIf="blogs.length === 0 && !useDocxMode">
+      <p>No blogs published yet. Check back soon.</p>
+    </div>
+
+    <div class="empty-state" *ngIf="blogs.length === 0 && useDocxMode">
+      <p>Add any `.docx` file in `src/assets/blogs` and set it in `docx-config.json`.</p>
+    </div>
+  </ng-template>
+
+  <div class="pagination" *ngIf="totalPages > 1 && !useDocxMode">
+    <button class="page-btn" [disabled]="currentPage === 1" (click)="onPageChange(currentPage - 1)">← Prev</button>
+    <button class="page-btn" *ngFor="let page of pageNumbers" [class.active]="page === currentPage" (click)="onPageChange(page)">{{ page }}</button>
+    <button class="page-btn" [disabled]="currentPage === totalPages" (click)="onPageChange(currentPage + 1)">Next →</button>
+  </div>
+</div>
+
+<div class="blog-detail-page" *ngIf="isDetailView">
+  <div class="loading-state" *ngIf="isLoading">
+    <div class="spinner"></div>
+    <p>Loading blog...</p>
+  </div>
+
+  <div class="error-state" *ngIf="error && !isLoading">
+    <p>{{ error }}</p>
+    <button (click)="goBack()">← Back to Blogs</button>
+  </div>
+
+  <article class="blog-article" *ngIf="activeBlog && !isLoading && !error">
+    <button class="back-btn" (click)="goBack()">← Back to Blogs</button>
+
+    <header class="detail-hero">
+      <div class="detail-title-col">
+        <h1 class="article-title">{{ activeBlog.title }}</h1>
+      </div>
+      <div class="detail-image-col">
+        <img *ngIf="activeBlog.thumbnail" class="article-thumbnail" [src]="activeBlog.thumbnail" [alt]="activeBlog.title" />
+        <div class="image-placeholder large" *ngIf="!activeBlog.thumbnail">Blog Cover</div>
+      </div>
+    </header>
+
+    <section class="detail-body">
+      <aside class="detail-sidebar">
+        <div class="toc-card" *ngIf="tocItems.length">
+          <h3>Table of Contents</h3>
+          <button type="button" *ngFor="let item of tocItems" (click)="scrollToSection(item.id)">
+            {{ item.text }}
+          </button>
+        </div>
+
+        <div class="share-card">
+          <h4>Share:</h4>
+          <div class="share-icons">
+            <button type="button" aria-label="Share on X" (click)="shareOnX()">X</button>
+            <button type="button" aria-label="Share on Facebook" (click)="shareOnFacebook()">f</button>
+            <button type="button" aria-label="Share on LinkedIn" (click)="shareOnLinkedIn()">in</button>
+          </div>
+        </div>
+      </aside>
+
+      <div class="content-column">
+        <div class="article-meta-line">
+          <span>By {{ activeBlog.author }}</span>
+          <span>{{ formatDate(activeBlog.scheduledAt || activeBlog.createdAt) }}</span>
+          <span>{{ getReadTime(activeBlog.content) }}</span>
+        </div>
+        <div class="blog-content" [innerHTML]="safeContent"></div>
+      </div>
+    </section>
+  </article>
+</div>

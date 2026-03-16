@@ -1,0 +1,16 @@
+{
+  "title": "Security Policy | Ad Radar",
+  "description": "Ad Radar's security policy covering personnel security, network architecture, data encryption, incident response, and compliance with SOC 2, ISO 27001, GDPR, and CCPA.",
+  "keywords": "Security Policy, Data Security, SOC2, ISO 27001, GDPR, CCPA, Encryption, Ad Radar",
+  "og": {
+    "title": "Security Policy | Ad Radar",
+    "description": "How Ad Radar protects your data with enterprise-grade security.",
+    "type": "website"
+  },
+  "twitter": {
+    "card": "summary",
+    "title": "Security Policy | Ad Radar",
+    "description": "How Ad Radar protects your data with enterprise-grade security."
+  },
+  "canonical": "https://adradar.com/security-policy"
+}

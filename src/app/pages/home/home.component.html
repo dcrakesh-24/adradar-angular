@@ -1,0 +1,251 @@
+<div class="home-page">
+  <section class="hero-section">
+    <div class="hero-content-section py-5">
+      <div class="container">
+        <div class="text-center">
+          <div class="hero-kicker d-inline-flex align-items-center gap-2 mb-3 p-2 rounded-pill">
+            <span class="dot"></span>
+            <span>LINKEDIN ADS AI AGENT</span>
+            <span>NOW IN BETA</span>
+          </div>
+          <h1 class="hero-title mb-3">Never fly blind. AdRadar sees everything.</h1>
+          <p class="hero-subtitle mx-auto mb-4">
+            AdRadar is the AI Copilot for B2B teams running LinkedIn Ads. Specialized agents watch your
+            campaigns 24/7 - flagging waste, predicting fatigue, and telling you exactly what to do next.
+          </p>
+          <div class="d-flex justify-content-center flex-wrap gap-2 mb-3 align-items-center">
+            <a href="#pricing" class="btn btn-danger rounded-pill ps-4 pe-1 fw-semibold fs-5" style="background-color: #FF6500 !important;">
+              Start for free <img src="/assets/home/images/button-arrow.svg" alt="Arrow right" class="ms-2" />
+            </a>
+            <a class="d-flex btn btn-outline-dark rounded-pill px-4 align-items-center justify-content-center fw-semibold" href="#how-it-works" style="height: 60px; color:#111827">See how it works</a>
+          </div>
+          <p class="hero-caption mb-4">Free forever plan &bull; No credit card required &bull; Setup in under 2 minutes</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="hero-media-section pb-5">
+      <div class="container">
+        <div class="hero-shot mx-auto">
+          <img src="/assets/home/images/dashboard.png" alt="AdRadar dashboard preview" />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="logo-strip py-4">
+    <div class="container text-center">
+      <p class="mb-6 fs-2" style="color: #4B5563;">Join leading brands transforming their LinkedIn campaigns.</p>
+      <div class="d-flex flex-wrap justify-content-center align-items-center gap-10">
+        <div class="company-chip" *ngFor="let logo of companyLogos">
+          <img *ngIf="logo.image; else logoName" [src]="logo.image" [alt]="logo.alt" />
+          <ng-template #logoName>{{ logo.name }}</ng-template>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="problem-section py-5">
+    <div class="container">
+      <div class="section-head text-center">
+          <span class="section-eyebrow p-2 rounded-pill">THE PROBLEM</span>
+        <h2>LinkedIn Ads is your most strategic channel. It&apos;s also your biggest black box.</h2>
+        <p>Teams spending 5k - 250k monthly in LinkedIn are flying blind and fixing issues too late.</p>
+      </div>
+
+      <div class="row g-3">
+        <div class="col-12 col-lg-6" *ngFor="let item of painPoints; let i = index">
+          <article class="pain-point" [class.open]="activePainPointIndex === i">
+            <button class="pain-trigger" type="button" (click)="togglePainPoint(i)" [attr.aria-expanded]="activePainPointIndex === i">
+              <div class="pain-title-wrap">
+                <img [src]="item.icon" [alt]="item.title" class="w-40px h-40px" />
+                <span class="pain-title">{{ item.title }}</span>
+              </div>
+              <i class="bi" [ngClass]="activePainPointIndex === i ? 'bi-chevron-up' : 'bi-chevron-down'"></i>
+            </button>
+
+            <div class="pain-body" *ngIf="activePainPointIndex === i">
+              <p>{{ item.description }}</p>
+              <div class="">
+                <img [src]="item.insightImage" [alt]="item.insightImageAlt" class="img-fluid" />
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <section class="specialists-section py-5" id="copilots">
+    <div class="container">
+      <div class="section-head text-center">
+        <span class="section-eyebrow p-2 rounded-pill">AI COPILOTS</span>
+        <h2>Six specialists. One intelligent formation.</h2>
+        <p>
+          Each Copilot owns a distinct layer of your LinkedIn Ads performance. Individually powerful. Together, they
+          share context and memory - compounding intelligence with every campaign.
+        </p>
+      </div>
+
+      <div class="specialists-grid">
+        <article class="specialist-card" [ngClass]="card.tone" *ngFor="let card of specialistCards">
+          <div class="specialist-icon-wrap">
+            <img [src]="card.icon" [alt]="card.iconAlt" class="specialist-icon" />
+          </div>
+          <h3>{{ card.title }}</h3>
+          <p>{{ card.description }}</p>
+          <div class="specialist-stat"><span class="stat-arrow">→</span>{{ card.stat }}</div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+
+  <section class="how-it-works py-5" id="how-it-works" style="background-color: #FFF5F3;">
+    <div class="container">
+      <div class="section-head">
+        <div>HOW IT WORKS</div>
+        <h2>Connect once. On the radar instantly.</h2>
+      </div>
+
+      <div class="row g-4 align-items-start how-grid">
+        <div class="col-12 col-lg-7">
+          <div
+            #timelineStep
+            class="timeline-step"
+            *ngFor="let step of timelineSteps; let i = index"
+            [class.active]="activeHowItWorksIndex === i"
+          >
+            <div class="step-marker">{{ i + 1 | number: '2.0-0' }}</div>
+            <div class="step-content">
+              <div class="step-label">{{ step.label }}</div>
+              <h3>{{ step.title }}</h3>
+              <p>{{ step.description }}</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-12 col-lg-5">
+          <div class="sticky-visual">
+            <div class="visual-card">
+              <div class="visual-image-wrap">
+                <img
+                  [src]="timelineVisuals[activeHowItWorksIndex].image"
+                  [alt]="timelineVisuals[activeHowItWorksIndex].imageAlt"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <section class="testimonial-section py-5" id="compare">
+    <div class="container">
+      <div class="section-head text-center">
+        <span class="section-eyebrow p-2 rounded-pill">EARLY ACCESS FEEDBACK</span>
+        <h2>Built for how performance marketers actually work.</h2>
+      </div>
+
+      <div class="testimonial-slider">
+        <div class="testimonial-track">
+          <article class="quote-card" *ngFor="let item of testimonialsSlider">
+            <div class="quote-top">
+              <div class="quote-avatar">{{ getInitials(item.name) }}</div>
+            </div>
+            <i class="bi bi-quote quote-mark"></i>
+            <p>{{ item.quote }}</p>
+            <div class="quote-meta">
+              <div>
+                <strong>{{ item.name }}</strong>
+                <div>{{ item.role }}</div>
+              </div>
+              <img [src]="item.companyLogo" [alt]="item.companyLogoAlt" class="quote-company-logo" />
+            </div>
+          </article>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="home-pricing-section py-5" id="pricing">
+    <div class="container">
+      <div class="section-head text-center">
+        <span class="section-eyebrow p-2 rounded-pill">PRICING</span>
+        <h2>Start free. Scale as you grow.</h2>
+        <p>No lock-in. No sales calls needed. Connect your LinkedIn Ads account and get your first insights in minutes.</p>
+      </div>
+
+      <div class="row g-3 pricing-grid">
+        <div class="col-12 col-md-6 col-xl-3" *ngFor="let plan of pricingPlans">
+          <article class="pricing-card h-100" [class.featured]="plan.featured">
+            <div class="popular-badge" *ngIf="plan.featured">Most Popular</div>
+            <div class="plan-label">{{ plan.label }}</div>
+            <div class="plan-name">{{ plan.name }}</div>
+            <div class="plan-price">{{ plan.price }}</div>
+            <div class="plan-billing">{{ plan.billingText }}</div>
+            <ul>
+              <li *ngFor="let feature of plan.features">
+                <i class="bi bi-check2"></i>
+                <span>{{ feature }}</span>
+              </li>
+            </ul>
+            <a class="btn rounded-pill mt-auto plan-cta" [ngClass]="plan.featured ? 'btn-danger' : 'btn-outline-dark'" href="#cta">
+              {{ plan.ctaText }}
+            </a>
+          </article>
+        </div>
+      </div>
+      <p class="agency-note mb-0">
+        <strong>Agency plan starts at $149/mo</strong> — includes 2 client workspaces, unlimited users, and cross-account benchmarking.
+      </p>
+    </div>
+  </section>
+
+  <section class="bottom-cta py-5" id="cta" style="background-image: url('/assets/home/images/app-cta.png'); background-size: cover; background-position: center;">
+    <div class="container">
+      <div class="cta-shell">
+        <div class="cta-agent-stack cta-agent-left ps-4">
+          <div class="cta-agent-chip tone-red">
+            <img src="/assets/home/images/title_blocking%201.svg" alt="Title blocking agent icon" class="cta-agent-icon" />
+            <span class="fs-6">Enable Auto Title Blocking Agent</span>
+          </div>
+          <div class="cta-agent-chip tone-blue">
+            <img src="/assets/home/images/account_blocking%201.svg" alt="Account blocking agent icon" class="cta-agent-icon" />
+            <span class="fs-6">Enable Auto Company Blocking Agent</span>
+          </div>
+          <div class="cta-agent-chip tone-amber">
+            <img src="/assets/home/images/campaign_scheduling%201.svg" alt="Campaign scheduling agent icon" class="cta-agent-icon" />
+            <span class="fs-6">Enable Auto Company Blocking Agent</span>
+          </div>
+        </div>
+
+        <div class="cta-content">
+          <h2 class="mb-2">Your LinkedIn spend deserves better than <span>gut feel.</span></h2>
+          <p class="mb-3">Connect your LinkedIn Ads account in 2 minutes. Your first Copilot briefing is ready instantly. No credit card required.</p>
+          <a href="#pricing" class="btn btn-danger rounded-pill ps-4 pe-1 fw-semibold fs-5" style="background-color: #FF6500 !important;">
+            Start for free <img src="/assets/home/images/button-arrow.svg" alt="Arrow right" class="ms-2" />
+          </a>
+        </div>
+
+        <div class="cta-agent-stack cta-agent-right pe-4">
+          <div class="cta-agent-chip tone-sky">
+            <img src="/assets/home/images/impression_capping%202.svg" alt="Impression capping agent icon" class="cta-agent-icon bg-white rounded-pill" />
+            <span class="fs-6">Enable Impression Capping Agent</span>
+          </div>
+          <div class="cta-agent-chip tone-green">
+            <img src="/assets/home/images/bidding_optimization%201.svg" alt="Bidding optimization agent icon" class="cta-agent-icon bg-white rounded-pill" />
+            <span class="fs-6">Enable Auto Company Blocking Agent</span>
+          </div>
+          <div class="cta-agent-chip tone-purple">
+            <img src="/assets/home/images/ad_rotation%201.svg" alt="Ad rotation agent icon" class="cta-agent-icon bg-white rounded-pill" />
+            <span class="fs-6 ">Enable Ad Rotation Agent</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
